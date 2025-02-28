@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+// Function to partition the array into two sub-arrays
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];  // Choosing the last element as the pivot
+    int i = (low - 1);  // Index of the smaller element
+
+    // Loop through the array and rearrange elements
+    for (int j = low; j < high; j++) {
+        // If the current element is smaller than the pivot
+        if (arr[j] < pivot) {
+            i++;  // Increment the index of the smaller
