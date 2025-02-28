@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+// Recursive function to solve the Tower of Hanoi problem
+void towerOfHanoi(int n, char from, char to, char aux) {
+    // Base case: If only one disk, move it from the source pole to the destination pole
+    if (n == 1) {
+        cout << "Move disk 1 from " << from << " to " << to << endl;
+        return;
+    }
+
+    // Move n-1 disks from source to auxiliary pole, using destination pole as auxiliary
+    towerOfHanoi(n - 1, from, aux, to);
+
+    // Move the nth disk from source to destination
+    cout << "Move disk " << n << " from " << from << " to " << to << endl;
+
+    // Move the n-1 disks from auxiliary pole to destination pole, using source pole as auxiliary
+    towerOfHanoi(n - 1, aux, to, from);
+}
+
+int main() {
+    int n;  // Number of disks
+
+    cout << "Enter the number of disks: ";
+    cin >> n;
+
+    // Solve the Tower of Hanoi problem with n disks
+    towerOfHanoi(n, 'A', 'C', 'B');  // 'A' is source, 'C' is destination, 'B' is auxiliary
+
+    return 0;
+}
