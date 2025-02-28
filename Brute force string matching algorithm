@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+// Function to perform brute force string matching
+int bruteForceSearch(const string &text, const string &pattern) {
+    int n = text.length();
+    int m = pattern.length();
+
+    // Iterate over all possible starting positions in the text
+    for (int i = 0; i <= n - m; i++) {
+        int j = 0;
+
+        // Check if the pattern matches the substring of the text starting at index i
+        while (j < m && text[i + j] == pattern[j]) {
+            j++;
+        }
+
+        // If the whole pattern is matched
+        if (j == m) {
+            return i;  // Return the starting index of the match
+        }
+    }
+
+    return -1;  // Return -1 if no match is found
+}
+
+int main() {
+    string text = "ABABDABACDABABCABAB";
+    string pattern = "ABABCABAB";
+
+    int result = bruteForceSearch(text, pattern);
+
+    if (result != -1) {
+        cout << "Pattern found at index: " << result << endl;
+    } else {
+        cout << "Pattern not found" << endl;
+    }
+
+    return 0;
+}
