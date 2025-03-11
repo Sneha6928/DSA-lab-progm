@@ -1,0 +1,29 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int evaluatePostfix(string exp) {
+    stack<int> s;
+
+    for (char ch : exp) {
+        if (isdigit(ch))
+            s.push(ch - '0');  // Convert char to int
+        else {
+            int b = s.top(); s.pop();
+            int a = s.top(); s.pop();
+            switch (ch) {
+                case '+': s.push(a + b); break;
+                case '-': s.push(a - b); break;
+                case '*': s.push(a * b); break;
+                case '/': s.push(a / b); break;
+            }
+        }
+    }
+    return s.top();
+}
+
+int main() {
+    string exp = "23*5+";
+    cout << "Result: " << evaluatePostfix(exp) << endl;
+    return 0;
+}
