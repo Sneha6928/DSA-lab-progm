@@ -1,0 +1,46 @@
+#include <iostream>
+#define MAX 5  // Stack size
+
+using namespace std;
+
+class Stack {
+    int arr[MAX], top;
+
+public:
+    Stack() { top = -1; }
+
+    void push(int value) {
+        if (top == MAX - 1)
+            cout << "Stack Overflow!\n";
+        else
+            arr[++top] = value;
+    }
+
+    void pop() {
+        if (top == -1)
+            cout << "Stack Underflow!\n";
+        else
+            top--;
+    }
+
+    void display() {
+        if (top == -1)
+            cout << "Stack is empty!\n";
+        else {
+            cout << "Stack: ";
+            for (int i = top; i >= 0; i--)
+                cout << arr[i] << " ";
+            cout << endl;
+        }
+    }
+};
+
+int main() {
+    Stack s;
+    s.push(10);
+    s.push(20);
+    s.display();
+    s.pop();
+    s.display();
+    return 0;
+}
